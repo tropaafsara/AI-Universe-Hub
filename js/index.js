@@ -16,7 +16,7 @@ const showTools = data =>{
         toolDiv.classList.add('col');
         toolDiv.innerHTML=`
         
-
+          
         <div class="col">
                   <div class="card p-4 rounded-4 ">
                     <img src="${image}" class="card-img-top rounded-4" alt="...">
@@ -59,14 +59,14 @@ const showToolDetails = toolsDetails =>{
   console.log(toolsDetails)
   const {features,description,integrations,pricing,image_link} = toolsDetails;
   document.getElementById('modal-body').innerHTML =`
-                  <div class="card mb-3">
-                  <div class="col">
-                  <div class="d-flex align-items-center">
-                  <div class="card p-4 rounded-4 bg-danger border border-danger" style="--bs-bg-opacity: .1;">
-                    
-                    <div class="card-body">
-                    <h5 class="card-title mb-3">${description}</h5>
-                    <div class="d-flex align-items-center justify-content-between mb-3 ">
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+ 
+  <div class="col">
+    <div class="card p-4 rounded-4 bg-danger border border-danger" style="--bs-bg-opacity: .1;"">
+      
+      <div class="card-body">
+      <h5 class="card-title mb-3">${description}</h5>
+      <div class="d-flex align-items-center justify-content-between mb-3 ">
                     <div class="p-3 bg-light rounded-4">
                     <p>${pricing[0].price}</p>
                     <p>${pricing[0].plan}</p>
@@ -80,7 +80,6 @@ const showToolDetails = toolsDetails =>{
                     <p>${pricing[2].plan}</p>
                     </div>
                     </div>
-
                     <div class="d-flex align-items-center">
                     <div>
                     <h5 class="card-title">Features</h5>
@@ -96,17 +95,29 @@ const showToolDetails = toolsDetails =>{
                         <li>${integrations[0] ? integrations[0] : "No Data Found"}</li>
                         <li>${integrations[1] ? integrations[1] : "No Data Found"}</li>
                         <li>${integrations[2] ? integrations[2] : "No Data Found"}</li>
-                      </ul>
-                      
+                      </ul>                     
+                    </div>
                     </div>
 
-                    <div>
-                    <img src="${image_link[0]}" class="card-img-top rounded-4" alt="...">
-                    </div>
-                  </div>
-                    
-                    </div>
-                    </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+  <div class="col">
+    <div class="card">
+      <img src="${image_link[0]}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
+  </div>
+</div>
                     
   `;
 }
