@@ -129,7 +129,7 @@ const showToolDetails = toolsDetails =>{
     <div class="card rounded-3">
       <div class="container position-relative">
       <img src="${image_link[0]}" class="card-img-top p-3 rounded-3" alt="...">
-      <button id="accuracy" class="btn btn-danger position-absolute top-0 end-0  " style="width:150px;">${ accuracy===null ? 'd-none' : accuracy.score*100}% accuracy</button>
+      <button id="accuracy" class="btn btn-danger position-absolute top-0 end-0  " style="width:150px;">${ accuracy===null ? 'display:none' : accuracy.score*100}% accuracy</button>
       </div>
       <div class="card-body text-center ">
         <h5 class="card-title ">${input_output_examples === null ? "Can you give any example?" : input_output_examples[0].input}</h5>
