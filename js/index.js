@@ -8,35 +8,26 @@ const fetchAllData = () =>{
     } )    
 }
 const showTools = (data) =>{
-
+  toggleSpinner(true)
 
   // sort by date
-  /* data.sort(function(a, b) {
-    var c = new Date(a.published_in);
-    var d = new Date(b.published_in);
-    return c-d;
-}); */
-/* document.getElementById('sort-btn').addEventListener('click',data.sort(function(a, b){
-    var c = new Date(a.published_in);
-    var d = new Date(b.published_in);
-    return c-d;
-})) */
-/* document.getElementById('sort-btn').addEventListener('click',function(){
+/*   const l =  data.sort(function(a, b) {
+      var c = new Date(a.published_in);
+      var d = new Date(b.published_in);
+      return c-d;
+  });
+document.getElementById('sort-btn').addEventListener('click',function(){
+  console.log(l,"sorted");
   
-  data.sort(function(a, b) {
-    var c = new Date(a.published_in);
-    var d = new Date(b.published_in);
-    return c-d;
-});
 }) */
+
    
     const toolsContainer =  document.getElementById('tools-container')
   toolsContainer.innerHTML="";
     data.forEach(singleTool=>{
-        // console.log(singleTool);
       //destructuring
       const {id, image,name, published_in, features} = singleTool;
-      // singleTool.sort((a, b) => a.published_in - b.published_in);
+      
 
         const toolDiv = document.createElement('div');
         toolDiv.classList.add('col');
@@ -68,9 +59,9 @@ const showTools = (data) =>{
         `
         toolsContainer.appendChild(toolDiv);
     })
-    
-   
+    toggleSpinner(false)
 }
+
 fetchAllData()
 
 const fetchToolDetails = id =>{
@@ -87,7 +78,7 @@ const showToolDetails = toolsDetails =>{
   
   
   
-
+  
   document.getElementById('modal-body').innerHTML =`
   <div class="row row-cols-1 row-cols-md-2 g-4">
  
@@ -124,6 +115,7 @@ const showToolDetails = toolsDetails =>{
                     <div>
                     <h5 class="card-title">Integrations</h5>
                       <ul>
+                      
                         <li>${integrations===null ?   "No Data Found" : integrations[0]}</li>
                         <li>${integrations===null ?   "No Data Found" : integrations[1]}</li>
                         <li>${integrations===null ?   "No Data Found" : integrations[2]}</li>
@@ -140,7 +132,8 @@ const showToolDetails = toolsDetails =>{
     <div class="card rounded-3">
       <div class="container position-relative">
       <img src="${image_link[0]}" class="card-img-top p-3 rounded-3" alt="...">
-      <button id="no-found-message" class="btn btn-danger position-absolute top-0 end-0 translate-middle-x" style="width:150px;">${  accuracy.score*100}% accuracy</button>
+      1. <button id="no-found-message" class="btn btn-danger position-absolute top-0 end-0  " style="width:150px;">${ accuracy===null ? '' :  accuracy.score*100 }% accuracy</button>
+      
       </div>
       <div class="card-body text-center ">
         <h5 class="card-title ">${input_output_examples === null ? "Can you give any example?" : input_output_examples[0].input}</h5>
@@ -151,16 +144,18 @@ const showToolDetails = toolsDetails =>{
 </div>
                     
   `;
+  
+
 }
 
-/* const toggleSpinner = isLoading =>{
+const toggleSpinner = isLoading =>{
   const loaderSection = document.getElementById('loader');
   if(isLoading){
       loaderSection.classList.remove('d-none')
   }else{
       loaderSection.classList.add('d-none')
   }
-} */
+}
 
 const showAllData =() =>{
   
@@ -173,7 +168,10 @@ const showAllData =() =>{
   } )  
   const seeMore = document.getElementById('see-more');
   seeMore.classList.add('d-none');
+
 }
+
+
 
 
 
