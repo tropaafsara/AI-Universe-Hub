@@ -11,11 +11,13 @@ const showTools = (data) =>{
   toggleSpinner(true)
 
   // sort by date
-/*   const l =  data.sort(function(a, b) {
+  /* const l =
+    data.sort(function(a, b) {
       var c = new Date(a.published_in);
       var d = new Date(b.published_in);
       return c-d;
   });
+    
 document.getElementById('sort-btn').addEventListener('click',function(){
   console.log(l,"sorted");
   
@@ -115,12 +117,7 @@ const showToolDetails = toolsDetails =>{
                     <div>
                     <h5 class="card-title">Integrations</h5>
                       <ul>
-                      
-                        <li>${integrations===null ?   "No Data Found" : integrations[0]}</li>
-                        <li>${integrations===null ?   "No Data Found" : integrations[1]}</li>
-                        <li>${integrations===null ?   "No Data Found" : integrations[2]}</li>
-                        
-
+                      ${integrations===null ?   "No Data Found" : integrations.map(a=>`<li>${a}</li>`).join("")}
                       </ul>                     
                     </div>
                     </div>
@@ -132,7 +129,7 @@ const showToolDetails = toolsDetails =>{
     <div class="card rounded-3">
       <div class="container position-relative">
       <img src="${image_link[0]}" class="card-img-top p-3 rounded-3" alt="...">
-      1. <button id="no-found-message" class="btn btn-danger position-absolute top-0 end-0  " style="width:150px;">${ accuracy===null ? '' :  accuracy.score*100 }% accuracy</button>
+      <button id="no-found-message" class="btn btn-danger position-absolute top-0 end-0  " style="width:150px;">${ accuracy===null ? '' :  accuracy.score*100 }% accuracy</button>
       
       </div>
       <div class="card-body text-center ">
@@ -144,8 +141,6 @@ const showToolDetails = toolsDetails =>{
 </div>
                     
   `;
-  
-
 }
 
 const toggleSpinner = isLoading =>{
